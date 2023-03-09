@@ -19,4 +19,17 @@ describe('Newsletter Subscribe Form', () => {
       .should('exist')
       .contains('tom@aol.com')
   })
+
+  it('does NOT allow an invalid email adress', () => {
+    cy.getByData("email-input")
+      .should('exist')
+      .type('tom');
+
+    cy.getByData("submit-button")
+      .should('exist')
+      .click()
+
+    cy.getByData("success-message")
+      .should('not.exist')
+  })
 })

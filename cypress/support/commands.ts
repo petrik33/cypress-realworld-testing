@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-export {}
 
 const getByData = (selector: string) => {
   return cy.get(`[data-test=${selector}]`);
@@ -8,7 +7,7 @@ const getByData = (selector: string) => {
 declare global {
   namespace Cypress {
     interface Chainable {
-      getByData : typeof getByData
+      getByData : typeof getByData;
     }
   }
 }
