@@ -18,23 +18,23 @@ describe("Subscribe", () => {
         message: `Success: ${EMAIL} has been successfully subscribed`,
       },
     }).as("emailSubscribe")
-    cy.getBySel("email-input").type(EMAIL)
-    cy.getBySel("submit-button").click()
+    cy.getByData("email-input").type(EMAIL)
+    cy.getByData("submit-button").click()
     cy.wait("@emailSubscribe")
-    cy.getBySel("success-message").should("exist").contains(EMAIL)
+    cy.getByData("success-message").should("exist").contains(EMAIL)
   })
 
   it("does NOT allow a invalid email address", function () {
-    cy.getBySel("email-input").type("tom")
-    cy.getBySel("submit-button").click()
-    cy.getBySel("success-message").should("not.exist")
+    cy.getByData("email-input").type("tom")
+    cy.getByData("submit-button").click()
+    cy.getByData("success-message").should("not.exist")
   })
 
   it("the email input cannot be blank", function () {
-    cy.getBySel("email-input")
-    cy.getBySel("submit-button").click()
-    cy.getBySel("success-message").should("not.exist")
-    cy.getBySel("error-message").should("exist")
+    cy.getByData("email-input")
+    cy.getByData("submit-button").click()
+    cy.getByData("success-message").should("not.exist")
+    cy.getByData("error-message").should("exist")
   })
 
   it("does NOT allow already subscribed email addresses", function () {
@@ -44,12 +44,12 @@ describe("Subscribe", () => {
       },
     }).as("emailSubscribe")
 
-    cy.getBySel("email-input").type(SUBSCRIBED_EMAIL)
-    cy.getBySel("submit-button").click()
+    cy.getByData("email-input").type(SUBSCRIBED_EMAIL)
+    cy.getByData("submit-button").click()
 
     cy.wait("@emailSubscribe")
 
-    cy.getBySel("server-error-message")
+    cy.getByData("server-error-message")
       .should("exist")
       .contains(
         `Error: ${SUBSCRIBED_EMAIL} already exists. Please use a different email address.`
