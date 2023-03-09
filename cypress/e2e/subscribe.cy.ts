@@ -3,17 +3,21 @@
 describe('Newsletter Subscribe Form', () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
-      .wait(50);
+      .wait(50)
   })
 
-  it('allows users to subscribe to email list', () => {
+  const subscribe = (email: string) => {
     cy.getByData("email-input")
       .should('exist')
-      .type('tom@aol.com');
+      .type(email)
 
     cy.getByData("submit-button")
       .should('exist')
       .click()
+  }
+
+  it('allows users to subscribe to email list', () => {
+    subscribe('tom@aol.com');
 
     cy.getByData("success-message")
       .should('exist')
@@ -21,15 +25,18 @@ describe('Newsletter Subscribe Form', () => {
   })
 
   it('does NOT allow an invalid email adress', () => {
-    cy.getByData("email-input")
-      .should('exist')
-      .type('tom');
-
-    cy.getByData("submit-button")
-      .should('exist')
-      .click()
+    subscribe('tom');
 
     cy.getByData("success-message")
       .should('not.exist')
+  })
+
+  it('does NOT allow subscribing twice', () => {
+    const emailAlreadySubscribed = 'john@example.com';
+
+    subscribe(emailAlreadySubscribed);
+
+    cy.getByData("server-error-message")
+      .should('exist')
   })
 })
