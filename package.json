@@ -51,6 +51,7 @@
     "@types/react": "^17.0.39",
     "autoprefixer": "^10.4.2",
     "chai": "^4.3.6",
+    "cypress": "^12.7.0",
     "eslint": "^8.10.0",
     "eslint-config-next": "^12.1.0",
     "eslint-config-prettier": "^8.5.0",
@@ -70,7 +71,7 @@
     "tailwindcss": "^3.0.23",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.13.0",
-    "typescript": "^4.6.2",
+    "typescript": "^4.9.5",
     "unslugify": "^1.0.2",
     "url-loader": "^4.1.1"
   }
