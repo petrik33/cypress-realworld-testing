@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import { MountReactComponentOptions, mount as reactMount } from 'cypress/react'
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 import "tailwindcss/tailwind.css"
 
 const mount = (component: ReactNode, options?: Partial<MountReactComponentOptions> | undefined, rerenderKey?: string | undefined) => {
