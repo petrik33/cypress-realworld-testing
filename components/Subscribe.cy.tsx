@@ -12,7 +12,7 @@ describe("Subscribe", () => {
     cy.get("input").should("have.attr", "placeholder", "Subscribe for Updates")
   })
 
-  it("allows users to subscribe to the email list", function () {
+  it("allows users to subscribe to the email list", () => {
     cy.intercept("POST", "/api/subscribe", {
       body: {
         message: `Success: ${EMAIL} has been successfully subscribed`,
@@ -24,20 +24,20 @@ describe("Subscribe", () => {
     cy.getByData("success-message").should("exist").contains(EMAIL)
   })
 
-  it("does NOT allow a invalid email address", function () {
+  it("does NOT allow a invalid email address", () => {
     cy.getByData("email-input").type("tom")
     cy.getByData("submit-button").click()
     cy.getByData("success-message").should("not.exist")
   })
 
-  it("the email input cannot be blank", function () {
+  it("the email input cannot be blank", () => {
     cy.getByData("email-input")
     cy.getByData("submit-button").click()
     cy.getByData("success-message").should("not.exist")
     cy.getByData("error-message").should("exist")
   })
 
-  it("does NOT allow already subscribed email addresses", function () {
+  it("does NOT allow already subscribed email addresses", () => {
     cy.intercept("POST", "/api/subscribe", {
       body: {
         message: `Error: ${SUBSCRIBED_EMAIL} already exists. Please use a different email address.`,
