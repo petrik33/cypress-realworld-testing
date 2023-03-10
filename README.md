@@ -1,5 +1,4 @@
-# Real World Testing with Cypress - Course App
+# Real World Testing with Cypress
 
-This application is for the [Testing your first application course](https://learn.cypress.io/testing-your-first-application) on [learn.cypress.io](https://learn.cypress.io/)
-
-You can find the instructions for this course [here](https://learn.cypress.io/testing-your-first-application/course-app).
+This application presents completed [Cypress end-to-end testing course](https://learn.cypress.io/testing-your-first-application) on [learn.cypress.io](https://learn.cypress.io/) as well
+as an example of component testing.
