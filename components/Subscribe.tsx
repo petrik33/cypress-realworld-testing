@@ -16,6 +16,7 @@ export default function Subscribe() {
   const [isSubmitted, setIsSubmitted] = React.useState("")
 
   const onSubmit: SubmitHandler<Inputs> = async (data, event) => {
+    if(!event) return;
     event.target.reset()
 
     const subscribe = await fetch("/api/subscribe", {
