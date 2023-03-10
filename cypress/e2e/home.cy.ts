@@ -27,7 +27,7 @@ describe('Home page', () => {
     })
   })
 
-  context.only('courses section', () => {
+  context('courses section', () => {
     it("Course: Testing your first Next.js Application", () => {
       cy.getByData('course-0')
         .find('a')
